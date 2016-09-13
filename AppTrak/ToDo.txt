@@ -1,0 +1,6 @@
+﻿Add Title bars to all Forms
+Add Multi Form Docking | Undocking
+Add multi browser support with in Form
+Add in Form Browser Tracking and Field Population
+Add Reminder's For Follow Ups
+Add Job Process Selection (Resume Sent, Follow-Up Sent, Interview, Final Interview, Offer)
