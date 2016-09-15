@@ -33,13 +33,12 @@
             this.txtbx_CompanyName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grpbx_OpportunityInformation = new System.Windows.Forms.GroupBox();
+            this.btn_ShowContacts = new System.Windows.Forms.Button();
             this.btn_AddResume = new System.Windows.Forms.Button();
             this.btn_NewOpportunity = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtbx_JobPosition = new System.Windows.Forms.TextBox();
             this.btn_SaveJob = new System.Windows.Forms.Button();
-            this.dtp_DateFollowUp = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.dtp_DateApplied = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +56,8 @@
             this.btn_CloseForm = new System.Windows.Forms.Button();
             this.lbl_TitleBarName = new System.Windows.Forms.Label();
             this.btn_PaypalDonation = new System.Windows.Forms.Button();
-            this.btn_ShowContacts = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbx_OpportunityStatus = new System.Windows.Forms.ComboBox();
             this.grpbx_OpportunityInformation.SuspendLayout();
             this.grpbx_OpportunitySearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SearchResults)).BeginInit();
@@ -83,14 +83,14 @@
             // 
             // grpbx_OpportunityInformation
             // 
+            this.grpbx_OpportunityInformation.Controls.Add(this.cmbx_OpportunityStatus);
+            this.grpbx_OpportunityInformation.Controls.Add(this.label5);
             this.grpbx_OpportunityInformation.Controls.Add(this.btn_ShowContacts);
             this.grpbx_OpportunityInformation.Controls.Add(this.btn_AddResume);
             this.grpbx_OpportunityInformation.Controls.Add(this.btn_NewOpportunity);
             this.grpbx_OpportunityInformation.Controls.Add(this.label8);
             this.grpbx_OpportunityInformation.Controls.Add(this.txtbx_JobPosition);
             this.grpbx_OpportunityInformation.Controls.Add(this.btn_SaveJob);
-            this.grpbx_OpportunityInformation.Controls.Add(this.dtp_DateFollowUp);
-            this.grpbx_OpportunityInformation.Controls.Add(this.label4);
             this.grpbx_OpportunityInformation.Controls.Add(this.dtp_DateApplied);
             this.grpbx_OpportunityInformation.Controls.Add(this.label3);
             this.grpbx_OpportunityInformation.Controls.Add(this.label2);
@@ -99,17 +99,28 @@
             this.grpbx_OpportunityInformation.Controls.Add(this.txtbx_CompanyName);
             this.grpbx_OpportunityInformation.Location = new System.Drawing.Point(2, 31);
             this.grpbx_OpportunityInformation.Name = "grpbx_OpportunityInformation";
-            this.grpbx_OpportunityInformation.Size = new System.Drawing.Size(464, 200);
+            this.grpbx_OpportunityInformation.Size = new System.Drawing.Size(464, 178);
             this.grpbx_OpportunityInformation.TabIndex = 3;
             this.grpbx_OpportunityInformation.TabStop = false;
             this.grpbx_OpportunityInformation.Text = "Job Information";
             // 
+            // btn_ShowContacts
+            // 
+            this.btn_ShowContacts.Enabled = false;
+            this.btn_ShowContacts.Location = new System.Drawing.Point(234, 148);
+            this.btn_ShowContacts.Name = "btn_ShowContacts";
+            this.btn_ShowContacts.Size = new System.Drawing.Size(107, 23);
+            this.btn_ShowContacts.TabIndex = 17;
+            this.btn_ShowContacts.Text = "Contacts";
+            this.btn_ShowContacts.UseVisualStyleBackColor = true;
+            this.btn_ShowContacts.Click += new System.EventHandler(this.btn_ShowContacts_Click);
+            // 
             // btn_AddResume
             // 
             this.btn_AddResume.Enabled = false;
-            this.btn_AddResume.Location = new System.Drawing.Point(347, 164);
+            this.btn_AddResume.Location = new System.Drawing.Point(347, 148);
             this.btn_AddResume.Name = "btn_AddResume";
-            this.btn_AddResume.Size = new System.Drawing.Size(107, 30);
+            this.btn_AddResume.Size = new System.Drawing.Size(107, 23);
             this.btn_AddResume.TabIndex = 16;
             this.btn_AddResume.Text = "Add Resume";
             this.btn_AddResume.UseVisualStyleBackColor = true;
@@ -117,9 +128,9 @@
             // 
             // btn_NewOpportunity
             // 
-            this.btn_NewOpportunity.Location = new System.Drawing.Point(8, 164);
+            this.btn_NewOpportunity.Location = new System.Drawing.Point(8, 148);
             this.btn_NewOpportunity.Name = "btn_NewOpportunity";
-            this.btn_NewOpportunity.Size = new System.Drawing.Size(107, 30);
+            this.btn_NewOpportunity.Size = new System.Drawing.Size(107, 23);
             this.btn_NewOpportunity.TabIndex = 13;
             this.btn_NewOpportunity.Text = "Create New";
             this.btn_NewOpportunity.UseVisualStyleBackColor = true;
@@ -144,41 +155,25 @@
             // btn_SaveJob
             // 
             this.btn_SaveJob.Enabled = false;
-            this.btn_SaveJob.Location = new System.Drawing.Point(121, 164);
+            this.btn_SaveJob.Location = new System.Drawing.Point(121, 148);
             this.btn_SaveJob.Name = "btn_SaveJob";
-            this.btn_SaveJob.Size = new System.Drawing.Size(107, 30);
+            this.btn_SaveJob.Size = new System.Drawing.Size(107, 23);
             this.btn_SaveJob.TabIndex = 13;
             this.btn_SaveJob.Text = "Save";
             this.btn_SaveJob.UseVisualStyleBackColor = true;
             this.btn_SaveJob.Click += new System.EventHandler(this.btn_SaveJob_Click);
             // 
-            // dtp_DateFollowUp
-            // 
-            this.dtp_DateFollowUp.Location = new System.Drawing.Point(97, 135);
-            this.dtp_DateFollowUp.Name = "dtp_DateFollowUp";
-            this.dtp_DateFollowUp.Size = new System.Drawing.Size(357, 23);
-            this.dtp_DateFollowUp.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 15);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Follow Up:";
-            // 
             // dtp_DateApplied
             // 
-            this.dtp_DateApplied.Location = new System.Drawing.Point(97, 105);
+            this.dtp_DateApplied.Location = new System.Drawing.Point(97, 119);
             this.dtp_DateApplied.Name = "dtp_DateApplied";
-            this.dtp_DateApplied.Size = new System.Drawing.Size(357, 23);
+            this.dtp_DateApplied.Size = new System.Drawing.Size(202, 23);
             this.dtp_DateApplied.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 112);
+            this.label3.Location = new System.Drawing.Point(156, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 15);
             this.label3.TabIndex = 7;
@@ -204,9 +199,9 @@
             // 
             this.btn_SearchJobs.Font = new System.Drawing.Font("Verdana", 10.25F, System.Drawing.FontStyle.Bold);
             this.btn_SearchJobs.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btn_SearchJobs.Location = new System.Drawing.Point(172, 465);
+            this.btn_SearchJobs.Location = new System.Drawing.Point(169, 433);
             this.btn_SearchJobs.Name = "btn_SearchJobs";
-            this.btn_SearchJobs.Size = new System.Drawing.Size(136, 38);
+            this.btn_SearchJobs.Size = new System.Drawing.Size(136, 25);
             this.btn_SearchJobs.TabIndex = 12;
             this.btn_SearchJobs.Text = "Search ";
             this.btn_SearchJobs.UseVisualStyleBackColor = true;
@@ -216,9 +211,9 @@
             // 
             this.grpbx_OpportunitySearch.Controls.Add(this.dgv_SearchResults);
             this.grpbx_OpportunitySearch.Controls.Add(this.btn_DeleteOpportunity);
-            this.grpbx_OpportunitySearch.Location = new System.Drawing.Point(5, 237);
+            this.grpbx_OpportunitySearch.Location = new System.Drawing.Point(5, 215);
             this.grpbx_OpportunitySearch.Name = "grpbx_OpportunitySearch";
-            this.grpbx_OpportunitySearch.Size = new System.Drawing.Size(461, 225);
+            this.grpbx_OpportunitySearch.Size = new System.Drawing.Size(461, 218);
             this.grpbx_OpportunitySearch.TabIndex = 4;
             this.grpbx_OpportunitySearch.TabStop = false;
             this.grpbx_OpportunitySearch.Text = "Click to Select Opportunity";
@@ -227,8 +222,8 @@
             // 
             this.dgv_SearchResults.AllowUserToAddRows = false;
             this.dgv_SearchResults.AllowUserToDeleteRows = false;
-            this.dgv_SearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_SearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgv_SearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_SearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgv_SearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SearchResults.Location = new System.Drawing.Point(3, 19);
             this.dgv_SearchResults.MultiSelect = false;
@@ -250,11 +245,11 @@
             // btn_DeleteOpportunity
             // 
             this.btn_DeleteOpportunity.Enabled = false;
-            this.btn_DeleteOpportunity.Font = new System.Drawing.Font("Verdana", 10.25F, System.Drawing.FontStyle.Bold);
+            this.btn_DeleteOpportunity.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_DeleteOpportunity.ForeColor = System.Drawing.Color.Red;
             this.btn_DeleteOpportunity.Location = new System.Drawing.Point(3, 189);
             this.btn_DeleteOpportunity.Name = "btn_DeleteOpportunity";
-            this.btn_DeleteOpportunity.Size = new System.Drawing.Size(455, 30);
+            this.btn_DeleteOpportunity.Size = new System.Drawing.Size(455, 25);
             this.btn_DeleteOpportunity.TabIndex = 14;
             this.btn_DeleteOpportunity.Text = "Remove Selected Opportunity";
             this.btn_DeleteOpportunity.UseVisualStyleBackColor = true;
@@ -264,9 +259,9 @@
             // 
             this.btn_SettingsForm.Font = new System.Drawing.Font("Verdana", 10.25F, System.Drawing.FontStyle.Bold);
             this.btn_SettingsForm.ForeColor = System.Drawing.Color.Black;
-            this.btn_SettingsForm.Location = new System.Drawing.Point(8, 465);
+            this.btn_SettingsForm.Location = new System.Drawing.Point(8, 433);
             this.btn_SettingsForm.Name = "btn_SettingsForm";
-            this.btn_SettingsForm.Size = new System.Drawing.Size(136, 38);
+            this.btn_SettingsForm.Size = new System.Drawing.Size(136, 25);
             this.btn_SettingsForm.TabIndex = 14;
             this.btn_SettingsForm.Text = "Settings";
             this.btn_SettingsForm.UseVisualStyleBackColor = true;
@@ -358,23 +353,34 @@
             // btn_PaypalDonation
             // 
             this.btn_PaypalDonation.Image = ((System.Drawing.Image)(resources.GetObject("btn_PaypalDonation.Image")));
-            this.btn_PaypalDonation.Location = new System.Drawing.Point(327, 466);
+            this.btn_PaypalDonation.Location = new System.Drawing.Point(327, 434);
             this.btn_PaypalDonation.Name = "btn_PaypalDonation";
-            this.btn_PaypalDonation.Size = new System.Drawing.Size(136, 38);
+            this.btn_PaypalDonation.Size = new System.Drawing.Size(136, 25);
             this.btn_PaypalDonation.TabIndex = 15;
             this.btn_PaypalDonation.UseVisualStyleBackColor = true;
             this.btn_PaypalDonation.Click += new System.EventHandler(this.btn_PaypalDonation_Click);
             // 
-            // btn_ShowContacts
+            // label5
             // 
-            this.btn_ShowContacts.Enabled = false;
-            this.btn_ShowContacts.Location = new System.Drawing.Point(234, 164);
-            this.btn_ShowContacts.Name = "btn_ShowContacts";
-            this.btn_ShowContacts.Size = new System.Drawing.Size(107, 30);
-            this.btn_ShowContacts.TabIndex = 17;
-            this.btn_ShowContacts.Text = "Contacts";
-            this.btn_ShowContacts.UseVisualStyleBackColor = true;
-            this.btn_ShowContacts.Click += new System.EventHandler(this.btn_ShowContacts_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(333, 101);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 15);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Current Status:";
+            // 
+            // cmbx_OpportunityStatus
+            // 
+            this.cmbx_OpportunityStatus.FormattingEnabled = true;
+            this.cmbx_OpportunityStatus.Items.AddRange(new object[] {
+            "Applied",
+            "Contacted",
+            "Interview",
+            "Offer"});
+            this.cmbx_OpportunityStatus.Location = new System.Drawing.Point(305, 119);
+            this.cmbx_OpportunityStatus.Name = "cmbx_OpportunityStatus";
+            this.cmbx_OpportunityStatus.Size = new System.Drawing.Size(149, 23);
+            this.cmbx_OpportunityStatus.TabIndex = 19;
             // 
             // MainForm
             // 
@@ -382,7 +388,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(472, 507);
+            this.ClientSize = new System.Drawing.Size(472, 462);
             this.Controls.Add(this.btn_PaypalDonation);
             this.Controls.Add(this.pnl_TitleBar);
             this.Controls.Add(this.btn_SettingsForm);
@@ -417,8 +423,6 @@
         private System.Windows.Forms.TextBox txtbx_JobPosition;
         private System.Windows.Forms.Button btn_SaveJob;
         private System.Windows.Forms.Button btn_SearchJobs;
-        private System.Windows.Forms.DateTimePicker dtp_DateFollowUp;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp_DateApplied;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -438,6 +442,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_PaypalDonation;
         private System.Windows.Forms.Button btn_ShowContacts;
+        private System.Windows.Forms.ComboBox cmbx_OpportunityStatus;
+        private System.Windows.Forms.Label label5;
     }
 }
 

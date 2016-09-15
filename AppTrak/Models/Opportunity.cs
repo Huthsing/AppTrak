@@ -12,16 +12,16 @@ namespace AppTrak.Models
     [XmlInclude(typeof(Contact))]
     public class Opportunity : IEquatable<Opportunity>
     {
+        [DisplayName(@"Date")]
+        public DateTime ApplicationDate { get; set; }
         [DisplayName(@"Company")]
         public string CompanyName { get; set; }
-        [DisplayName(@"Link")]
-        public string WebLink { get; set; }
+        [DisplayName(@"Status")]
+        public string FollowUpStatus { get; set; }
         [DisplayName(@"Position")]
         public string Position { get; set; }
-        [DisplayName(@"Application Date")]
-        public DateTime ApplicationDate { get; set; }
-        [DisplayName(@"Follow Up Date")]
-        public DateTime FollowUpDate { get; set; }
+        [DisplayName(@"Link")]
+        public string WebLink { get; set; }
         [DisplayName(@"Contacts")]
         public List<Contact> Contacts { get; set; }
         public bool Equals(Opportunity other)

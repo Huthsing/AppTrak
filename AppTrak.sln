@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTrak", "AppTrak\AppTrak.csproj", "{4276448B-B964-44F2-9313-396F37746D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTrack.Resource", "AppTrack.Resource\AppTrack.Resource.csproj", "{C018AB19-EB02-4B29-91D9-45AE360D0AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTrak.Server", "AppTrak.Server\AppTrak.Server.csproj", "{E8433E1C-ADFC-4E18-B608-6392F3F1B980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4276448B-B964-44F2-9313-396F37746D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4276448B-B964-44F2-9313-396F37746D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4276448B-B964-44F2-9313-396F37746D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C018AB19-EB02-4B29-91D9-45AE360D0AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C018AB19-EB02-4B29-91D9-45AE360D0AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C018AB19-EB02-4B29-91D9-45AE360D0AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C018AB19-EB02-4B29-91D9-45AE360D0AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8433E1C-ADFC-4E18-B608-6392F3F1B980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8433E1C-ADFC-4E18-B608-6392F3F1B980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8433E1C-ADFC-4E18-B608-6392F3F1B980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8433E1C-ADFC-4E18-B608-6392F3F1B980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,7 +36,7 @@ namespace AppTrak.Ui
             catch (Exception)
             {
             }
-            dtp_DateFollowUp.Value = DateTime.Today + new TimeSpan(7, 0, 0, 0);
+            cmbx_OpportunityStatus.SelectedIndex = 0;
             EnableOpportunities(false);
         }
 
@@ -170,16 +170,26 @@ namespace AppTrak.Ui
                 WebLink = "",
                 Position = "",
                 ApplicationDate = DateTime.Today,
-                FollowUpDate = DateTime.Today,
+                FollowUpStatus = "Applied",
                 Contacts = new List<Contact>()
             };
 
             if (Settings.Default.UseDefaultResume)
-                ResumeLocation = Settings.Default.DefaultResumeLocation;
+            {
+                if (!File.Exists(Settings.Default.DefaultResumeLocation))
+                    MessageBox.Show(@"Unable locate Default Resume.");
+                else
+                    ResumeLocation = Settings.Default.DefaultResumeLocation;
+            }
 
             if (Settings.Default.UseDefaultCoverLetter)
-                CoverLetterLocation = Settings.Default.DefaultCoverLetterLocation;
-            
+            {
+                if (!File.Exists(Settings.Default.DefaultCoverLetterLocation))
+                    MessageBox.Show(@"Unable locate Default Cover Letter.");
+                else
+                    CoverLetterLocation = Settings.Default.DefaultCoverLetterLocation;
+            }
+
             dgv_SearchResults.ClearSelection();
         }
 
@@ -208,7 +218,7 @@ namespace AppTrak.Ui
                 updateSelected.WebLink = txtbx_WebUrl.Text;
                 updateSelected.Position = txtbx_JobPosition.Text;
                 updateSelected.ApplicationDate = dtp_DateApplied.Value.Date;
-                updateSelected.FollowUpDate = dtp_DateFollowUp.Value.Date;
+                updateSelected.FollowUpStatus = cmbx_OpportunityStatus.Text;
                 updateSelected.Contacts = CurrentOpportunity.Contacts;
             }
             else
@@ -217,7 +227,7 @@ namespace AppTrak.Ui
                 CurrentOpportunity.WebLink = txtbx_WebUrl.Text;
                 CurrentOpportunity.Position = txtbx_JobPosition.Text;
                 CurrentOpportunity.ApplicationDate = dtp_DateApplied.Value.Date;
-                CurrentOpportunity.FollowUpDate = dtp_DateFollowUp.Value.Date;
+                CurrentOpportunity.FollowUpStatus = cmbx_OpportunityStatus.Text;
                 Program.Opportunities.Add(CurrentOpportunity);
             }
             FileHelper.CreateBackUp(CurrentOpportunity, ResumeLocation, CoverLetterLocation);
@@ -231,7 +241,6 @@ namespace AppTrak.Ui
             btn_DeleteOpportunity.Enabled = true;
             btn_AddResume.Text = @"Add Resume";
             btn_AddResume.Enabled = false;
-            dtp_DateFollowUp.Value = DateTime.Today + new TimeSpan(7, 0, 0, 0);
             //ClearOpportunities();
             //ClearContact();
             //dgv_Contacts.DataSource = null;
@@ -288,14 +297,14 @@ namespace AppTrak.Ui
             btn_DeleteOpportunity.Enabled = true;
             EnableOpportunities(false);
             var selectedRow = dgv_SearchResults.SelectedRows[0];
-            txtbx_CompanyName.Text = selectedRow.Cells[0].Value.ToString();
-            txtbx_WebUrl.Text = selectedRow.Cells[1].Value.ToString();
-            txtbx_JobPosition.Text = selectedRow.Cells[2].Value.ToString();
+            txtbx_CompanyName.Text = selectedRow.Cells[@"CompanyName"].Value.ToString();
+            txtbx_WebUrl.Text = selectedRow.Cells[@"WebLink"].Value.ToString();
+            txtbx_JobPosition.Text = selectedRow.Cells[@"Position"].Value.ToString();
             DateTime date;
-            if (DateTime.TryParse(selectedRow.Cells[3].Value.ToString(), out date))
+            if (DateTime.TryParse(selectedRow.Cells[@"ApplicationDate"].Value.ToString(), out date))
                 dtp_DateApplied.Value = date;
-            if (DateTime.TryParse(selectedRow.Cells[4].Value.ToString(), out date))
-                dtp_DateFollowUp.Value = date;
+            cmbx_OpportunityStatus.SelectedIndex = cmbx_OpportunityStatus.Items.IndexOf(selectedRow.Cells[@"FollowUpStatus"].Value.ToString());
+            //cmbx_OpportunityStatus.Text = selectedRow.Cells[4].Value.ToString();
             CurrentOpportunity = Program.Opportunities.FirstOrDefault(x => x.CompanyName == txtbx_CompanyName.Text &&
                                                                            x.CompanyName == txtbx_CompanyName.Text &&
                                                                            x.WebLink == txtbx_WebUrl.Text &&
@@ -369,7 +378,7 @@ namespace AppTrak.Ui
             txtbx_WebUrl.ReadOnly = !fieldsEnabled;
             txtbx_JobPosition.ReadOnly = !fieldsEnabled;
             dtp_DateApplied.Enabled = fieldsEnabled;
-            dtp_DateFollowUp.Enabled = fieldsEnabled;
+            cmbx_OpportunityStatus.Enabled = fieldsEnabled;
         }
 
         public void ClearOpportunities()
@@ -378,29 +387,8 @@ namespace AppTrak.Ui
             txtbx_WebUrl.Text = "";
             txtbx_JobPosition.Text = "";
             dtp_DateApplied.Value = DateTime.Today;
-            dtp_DateFollowUp.Value = DateTime.Today + new TimeSpan(7, 0, 0, 0);
+            cmbx_OpportunityStatus.SelectedIndex = 0;
         }
-
-        //public void JobSelect()
-        //{
-        //    //We only need to worry about the first row since the user can only select one row.
-        //    var selectedRow = dgv_SearchResults.SelectedRows[0];
-        //    var selectedJob =
-        //        Program.Opportunities.FirstOrDefault(
-        //            x =>
-        //                selectedRow.Cells[2].ToString() == x.Position &&
-        //                selectedRow.Cells[0].ToString() == x.CompanyName);
-        //    //Return if we can not find the opportunity in our list.
-        //    if (selectedJob == null)
-        //        return;
-        //    //Fill the UI with selected row information
-        //    txtbx_CompanyName.Text = selectedJob.CompanyName;
-        //    txtbx_WebUrl.Text = selectedJob.WebLink;
-        //    txtbx_JobPosition.Text = selectedJob.Position;
-        //    dtp_DateApplied.Text = selectedJob.ApplicationDate.ToString(CultureInfo.InvariantCulture);
-        //    dtp_DateFollowUp.Text = selectedJob.FollowUpDate.ToString(CultureInfo.InvariantCulture);
-        //    dgv_Contacts.DataSource = selectedJob.Contacts;
-        //}
 
         #endregion Methods
 
