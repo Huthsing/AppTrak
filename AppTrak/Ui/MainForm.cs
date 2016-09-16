@@ -62,6 +62,12 @@ namespace AppTrak.Ui
             }
         }
 
+        private void btn_ShowContacts_Click(object sender, EventArgs e)
+        {
+            var showContacts = new ContactForm();
+            showContacts.ShowDialog();
+        }
+
         private void btn_SettingsForm_Click(object sender, EventArgs e)
         {
             var settingsForm = new SettingsForm();
@@ -392,10 +398,10 @@ namespace AppTrak.Ui
 
         #endregion Methods
 
-        private void btn_ShowContacts_Click(object sender, EventArgs e)
+        private void btn_ShowStats_Click(object sender, EventArgs e)
         {
-            var showContacts = new ContactForm();
-            showContacts.ShowDialog();
+            var statsForm = new StatsForm();
+            statsForm.ShowDialog();
         }
     }
 }
