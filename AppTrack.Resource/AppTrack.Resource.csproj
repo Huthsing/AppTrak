@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="grizzly-bear-paw-print-clipart-free.gif.ico" />
+    <None Include="Scripts\VersionUpdater.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -79,6 +80,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug CALL $(ProjectDir)Scripts\VersionUpdater.exe $(ProjectDir)Properties\ "true"
+if $(ConfigurationName) == Release CALL $(ProjectDir)Scripts\VersionUpdater.exe $(ProjectDir)Properties\ "false"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

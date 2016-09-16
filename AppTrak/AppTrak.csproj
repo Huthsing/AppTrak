@@ -28,6 +28,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -146,6 +148,7 @@
     <EmbeddedResource Include="Ui\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,6 +173,7 @@
     <None Include="Resources\Paypal.png" />
     <None Include="Resources\Paypal Small.png" />
     <None Include="Resources\Paypal Small1.png" />
+    <None Include="Scripts\VersionUpdater.exe" />
     <Content Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +189,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MSBuildTasks.1.5.0.196\build\MSBuildTasks.targets" Condition="Exists('..\packages\MSBuildTasks.1.5.0.196\build\MSBuildTasks.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSBuildTasks.1.5.0.196\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuildTasks.1.5.0.196\build\MSBuildTasks.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug CALL $(ProjectDir)Scripts\VersionUpdater.exe $(ProjectDir)Properties\ "true"
+if $(ConfigurationName) == Release CALL $(ProjectDir)Scripts\VersionUpdater.exe $(ProjectDir)Properties\ "false"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
